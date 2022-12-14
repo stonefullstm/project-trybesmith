@@ -24,3 +24,36 @@ export type TProductsOrder = {
 };
 
 export type TFullOrder = TOrder & TProductsOrder;
+
+export type TNewUser = {
+  id: number,
+  username: string,
+  vocation: string,
+  level: number,
+  password: string,
+};
+
+export type TUserToken = {
+  id: number,  
+  username: string,
+  vocation: string,
+  level: number,
+};
+
+export type TUserCredentials = {
+  username: string,
+  vocation: string,
+  level: number,
+  password: string,
+};
+
+export type TToken = {
+  payload: {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
+  };
+  iat: number;
+  exp: number;
+};
