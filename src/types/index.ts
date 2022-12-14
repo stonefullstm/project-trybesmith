@@ -5,6 +5,15 @@ export type TProduct = {
   orderId?: number
 };
 
+export type TNewProduct = {
+  name: string,
+  amount: number,
+};
+
+export type TCreatedProduct = {
+  id: number,
+} & TNewProduct;
+
 export type TOrder = {
   id?: number,
   userId?: number,

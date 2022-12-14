@@ -12,7 +12,7 @@ const getAll = async (): Promise<TFullOrder[]> => {
     FROM Trybesmith.orders as o
     INNER JOIN Trybesmith.products as p
     ON p.order_id = o.id
-    GROUP BY o.id`,
+    GROUP BY o.id, o.user_id`,
   );
   return orders;
 };
