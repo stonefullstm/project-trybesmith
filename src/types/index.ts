@@ -1,13 +1,13 @@
 export type TProduct = {
   id?: number,
   name: string,
-  amount: number,
+  amount: string,
   orderId?: number
 };
 
 export type TNewProduct = {
   name: string,
-  amount: number,
+  amount: string,
 };
 
 export type TCreatedProduct = {
