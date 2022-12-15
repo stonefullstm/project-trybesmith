@@ -1,17 +1,17 @@
 import { NextFunction, Request, Response } from 'express';
 import Joi from 'joi';
 
-const userSchema = Joi.object(
+const loginSchema = Joi.object(
   {
     username: Joi.required(),
     password: Joi.required(),
   },
 );
 
-const validateUser = (req: Request, res: Response, next: NextFunction) => {
-  const { error } = userSchema.validate(req.body);
+const validateLogin = (req: Request, res: Response, next: NextFunction) => {
+  const { error } = loginSchema.validate(req.body);
   if (error) return res.status(400).json({ message: error.message });
   next();
 };
 
-export default validateUser;
+export default validateLogin;
