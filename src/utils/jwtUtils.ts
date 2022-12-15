@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
-import { TNewUser } from '../types';
+import { TUserToken } from '../types';
 
-const secret = 'Trybe';
+const secret = process.env.JWT_SECRET || 'secret';
 
-const createToken = (data: TNewUser) => {
+const createToken = (data: TUserToken) => {
   const token = jwt.sign({ data }, secret, {
     expiresIn: '2d',
     algorithm: 'HS256',

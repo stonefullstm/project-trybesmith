@@ -47,6 +47,11 @@ export type TUserCredentials = {
   password: string,
 };
 
+export type TLogin = {
+  username: string,
+  password: string,
+};
+
 export type TToken = {
   payload: {
     id: number;
