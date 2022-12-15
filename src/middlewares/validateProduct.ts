@@ -11,7 +11,8 @@ const productSchema = Joi.object(
 const validateProduct = (req: Request, res: Response, next: NextFunction) => {
   const { error } = productSchema.validate(req.body);
   if (error) {
-    const statusCode = error.details[0].type === 'any.required' ? 400 : 422; 
+    const [details] = error.details;
+    const statusCode = details.type === 'any.required' ? 400 : 422; 
     return res.status(statusCode).json({ message: error.message });
   }
   next();
