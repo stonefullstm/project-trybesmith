@@ -4,7 +4,6 @@ import Joi from 'joi';
 const orderSchema = Joi.object(
   {
     productsIds: Joi.array().items(Joi.required()).required(),
-    // user: Joi.object(),
   },
 ).messages({ 
   'array.includesRequiredUnknowns': '"productsIds" must include only numbers',
