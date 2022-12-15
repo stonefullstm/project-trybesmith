@@ -16,7 +16,7 @@ export type TCreatedProduct = {
 
 export type TOrder = {
   id?: number,
-  userId?: number,
+  userId: number,
 };
 
 export type TProductsOrder = {

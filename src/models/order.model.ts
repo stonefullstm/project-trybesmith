@@ -1,10 +1,6 @@
-import { RowDataPacket } from 'mysql2/promise';
-import { TFullOrder } from '../types';
+import { ResultSetHeader, RowDataPacket } from 'mysql2/promise';
+import { TFullOrder, TOrder } from '../types';
 import connection from './connection';
-
-// RowDataPacket => SELECT
-// ResultSetHeader => INSERT, DELETE, UPDATE
-// OkPacket => SET (protocol_41)
 
 const getAll = async (): Promise<TFullOrder[]> => {
   const [orders] = await connection.execute<RowDataPacket[] & TFullOrder[]>(
@@ -17,4 +13,12 @@ const getAll = async (): Promise<TFullOrder[]> => {
   return orders;
 };
 
-export default { getAll };
+const create = async (order: TOrder): Promise<number> => {
+  const [{ insertId }] = await connection.execute<ResultSetHeader>(
+    'INSERT INTO Trybesmith.orders (user_id) VALUES (?)',
+    [order.userId],
+  );
+  return insertId;
+};
+
+export default { getAll, create };

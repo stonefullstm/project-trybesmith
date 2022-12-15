@@ -25,4 +25,11 @@ const create = async (product: TNewProduct): Promise<TCreatedProduct> => {
   return newProduct;
 };
 
-export default { getAll, create };
+const update = async ({ orderId, id }: Partial<TProduct>): Promise<void> => {
+  await connection.execute(
+    'UPDATE Trybesmith.products SET order_id = ? WHERE id = ?',
+    [orderId, id],
+  );
+};
+
+export default { getAll, create, update };

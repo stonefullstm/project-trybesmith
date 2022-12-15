@@ -1,9 +1,14 @@
 import orderModel from '../models/order.model';
-import { TFullOrder } from '../types';
+import { TFullOrder, TOrder } from '../types';
 
 const getAll = async (): Promise<TFullOrder[]> => {
   const orders = await orderModel.getAll();
   return orders;
 };
 
-export default { getAll };
+const create = async (order: TOrder): Promise<number> => {
+  const orderId = await orderModel.create(order);
+  return orderId;
+};
+
+export default { getAll, create };

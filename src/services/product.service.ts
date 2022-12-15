@@ -11,4 +11,9 @@ const create = async (product: TNewProduct) => {
   return { status: 201, newProduct };
 };
 
-export default { getAll, create };
+const update = async (productsIds: Array<number>, orderId: number): Promise<void> => {
+  const updatePromises = productsIds.map(async (id) => productModel.update({ orderId, id }));
+  await Promise.all(updatePromises);
+};
+
+export default { getAll, create, update };
