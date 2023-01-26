@@ -2,7 +2,14 @@ import jwt from 'jsonwebtoken';
 import { TUserToken } from '../types';
 
 const createToken = (data: TUserToken) => {
-  const token = jwt.sign({ data }, process.env.JWT_SECRET as string, {
+  const { id, username, vocation, level } = data;
+  const user: TUserToken = { 
+    id,
+    username,
+    vocation,
+    level,
+  }; 
+  const token = jwt.sign(user, process.env.JWT_SECRET as string, {
     expiresIn: '2d',
     algorithm: 'HS256',
   });

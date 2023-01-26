@@ -9,7 +9,7 @@ const getAll = async (req: Request, res: Response) => {
 
 const create = async (req: Request, res: Response): Promise<void> => {
   const order = req.body;
-  const { id: userId } = order.user.data;
+  const { id: userId } = order.user;
   
   const { productsIds } = order;
   
